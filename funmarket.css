@@ -1,0 +1,15 @@
+.ng-scope {
+    margin: 5px;
+}
+
+.error {
+    color: red;
+}
+
+.editForm .column-one {
+    width: 100px;
+}
+
+.showAdTable .column-one {
+    width: 100px;
+}
