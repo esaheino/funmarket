@@ -1,0 +1,10 @@
+
+--------------------
+Ohje käyttöönottoon:
+--------------------
+
+1) Luo verkkopalvelimen julkaistavan sisällön hakemiston juureen hakemisto nimeltä "funmarket"
+
+2) Vie tässä Github-repossa oleva sisältö ko. hakemiston juureen
+
+3) Testaa osoitteessa [palvelinosoite:portti]/funmarket sovellusta
