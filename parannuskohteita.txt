@@ -1,0 +1,88 @@
+
+
+PARANNUSKOHTEET TOP-5:
+
+* Uuden ilmoituksen luonnissa ja olemassaolevan muokkauksessa kerrotaan hakulomakkeella kenttien
+  pakollisuudesta, mutta talletusvaiheessa asiaa ei kontrolloida, että kaikki pakolliset kentät
+  on syötetty ym. Eli tallennus epäonnistuu, mikäli kaikkia kenttiä ei ole syötetty, mutta
+  käyttäjä ei saa tästä feedbackiä. Lisätään ilmoituksen tallennuksen yhteyteen tarkistus, että
+  kaikki tarpeelliset kentät on syötetty ilmoitukseen.
+
+* Syöttökentille pituusrajoitukset ilmoituksen lisäyksessä/muokkauksessa.
+
+* Ilmoituksen lisäyksessä/muokkauksessa "Kuvaus"-kentän syöttölaatikko suuremmaksi ja moniriviseksi.
+
+* Kuvien lisääminen oman koneen hakemistoista (nyt voi antaa URL:n netissä olevaan kuvaan, mutta
+  tämä ei ole tarkoituksenmukaista, vaan kuvia olisi hyvä voida lisätä aidosti taustajärjestelmän
+  images-rajapinnan avulla.
+
+* Hinnan syöttökenttä euroiksi (nyt on sentteinä ilmoituksen lisäyksessä/muokkauksessa, vaikka
+  muutoin näytetään euroina).
+
+
+MUITA PARANNUSKOHTEITA:
+
+* Taustajärjestelmän rajapinta vastaa joskus hitaasti (varsinkin jos sitä ei ole hetkeen käytetty).
+  Käyttöliittymässä voisi mahdollisesti antaa jotain feedbackkiä silloin kuin taustajärjestelmän
+  REST API -kutsu kestää pidempään.
+
+* Hinnan perusteella hakutulosten rajaaminen.
+
+* Kuvan lisäyksen yhteydessä myös kooltaan rajatun thumbnail-kuvan luonti ja postaus REST API:iin
+
+* Ilmoituksen deletointiin "Haluatko varmasti poistaa" -dialogi ennen ilmoituksen poistoa.
+
+* Ilmoituksen deletointiin sen epäonnistuessa järkevä ilmoitus (esim. jos ilmoitus on jo poistunut).
+
+* AngularJS:n ngRouten resolve-konfiguraation hyödyntäminen $resource-olion kanssa yksittäisten
+  kohteiden hakemisessa editointia ja näyttöä varten. Tällä voidaan saada aikaan näkymän päivittyminen
+  vasta siinä vaiheessa, kun tiedot on saatu haettu $resource-olion avulla taustajärjestelmän REST API:sta.
+  Erityisesti hiukan hitaammilla nettiyhteyksillä (ja jossain määrin nopeammillakin) tämä voisi tuoda
+  paremman käyttökokemuksen, kun muu näkymän näyttö tapahtuu vasta siinä vaiheessa, sille tuleva datakin saapuu.
+  (Nyt ilman tätä ratkaisua on jossain tilanteissa näkymissä epämääräistä "välkettä" tai sivun dynaamista
+   muovautumista vielä sivun ensinäytön jälkeen). Silloin kun REST API vastaa hitaasti, voitaisiin
+   myös näyttää tässä järjestelyssä käyttöliittymässä ensin esim. teksti "myyntikohteen tietoja haetaan tms.")
+  Ks. tarkemmin seuraavista lähteistä:
+  http://odetocode.com/blogs/scott/archive/2014/05/20/using-resolve-in-angularjs-routes.aspx
+  https://docs.angularjs.org/api/ngRoute/provider/$routeProvider
+  https://code.angularjs.org/1.3.14/docs/api/ngResource/service/$resource
+
+* mahdollisesti AngularJS:n tuotantoajon asetusten asetus tähän tapaan (näiden vaikutuksen voisi todeta/testata):
+  https://code.angularjs.org/1.3.14/docs/guide/production
+
+* Taustajärjestelmän rajapinnan osoite toistetaan koodissa monta kertaa, mikä on tietenkin
+  rumaa ja turhaa toistoa. Muutkin sovelluksen tarvitsemat vakiot (ainakin ympäristöriippuvaiset)
+  on toki tyylikästä eriyttää koodista. Yksi vaihtoehto on tässä kuvatun tapaan:
+  http://javahonk.com/angularjs-read-property-file-value/
+
+* Oikeastaan voi pohtia, kuuluuko tässä vaiheessa taustajärjestelmän rajapinnan osoite
+  ollenkaan GitHubiin julkisesti, eli sen voisi ehkä kokonaan sieltä poistaa (vrt. edellinen kohta), jos haluaisi
+  olla kovin varovainen.
+
+
+MUUTA HUOMIOITAVAA:
+
+* Varsinainen mobiilitestaus jäi tekemättä (testattiin normaalilla kannettavalla Google Chromella lähinnä).
+  Käyttöliittymän layoutissa pyrittiin pitämään mielessä myös (hiukan mobile-first-hengessä)
+  käytettävyys mobiililaitteilla ja kosketusnäytöllä. Joten kosketusnäyttötoimivuuden testaus ja tarvittaessa
+  käyttöliittymän hienosäätö sen pohjalta olisi hyvä tehdä.
+
+* Kirjautumista ei ole toteutettu mitenkään. Toisaalta koska backend-rajapinta sallii kaikenlaiset operaatiot
+  ilman autentikointia, ei tällaisenaan rajoitteiden rakentaminen käyttöliittymätasolle olisi varsinaista
+  tietoturvaa tuonutkaan tässä mielessä ilman, että rajapinta suojattaisiin autentikaatiolla tms.
+  editointioperaatioiden osalta ja sallittaisiin backend-rajapinnassa ainoastaan omien ilmoitusten
+  muokkaus ja poisto.
+
+* $rootScopen sijaan hakutuloslista ja sen päivitys eri tilanteissa voisi olla tyylikääämpää hoitaa servicenä
+  (tässä oli jotain syntaksiongelmaa tms. ongelmaa, joten tyydyttiin tuossa asiassa nyt $rootScopen käyttöön).
+  Ylipäätään olisi tyylikästä välttää $rootScopen käyttöä, vaikkakin nyt sen avulla saatiin tietty käytös
+  sovellukseen aikaan vähillä koodiriveillä. Varmasti löytyy myös parempi tapa, kun vähän lisää Angular JS:n
+  dokumentaatiota tutkii.
+
+* URL-riviltä turhien polkujen häivyttäminen käyttäjiltä näkymättömiin, voisi toimia jotenkin tätä kautta:
+    $locationProvider.html5Mode(true);  // asetetaan applikaation config-osassa tms. yms.
+  Tässä kuitenkin hyvä huomioida, että ei ole toivottavaa, että yksittäisten kohteiden URL-polut jätetään
+  myös näyttämättä, sillä on hyvä, että kauppapaikan kävijät voivat jakaa toisilleen esim. sähköpostitse
+  myyntikohdekohtaisia osoitteita, jotka voivat olla esim. seuraavaa muotoa:
+  http://funmarket.com/show/55504e0be4b0f73cbd8b4cf8
+
