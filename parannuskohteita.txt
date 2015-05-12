@@ -8,8 +8,6 @@ PARANNUSKOHTEET TOP-5:
   käyttäjä ei saa tästä feedbackiä. Lisätään ilmoituksen tallennuksen yhteyteen tarkistus, että
   kaikki tarpeelliset kentät on syötetty ilmoitukseen.
 
-* Syöttökentille pituusrajoitukset ilmoituksen lisäyksessä/muokkauksessa.
-
 * Kuvien lisääminen oman koneen hakemistoista (nyt voi antaa URL:n netissä olevaan kuvaan, mutta
   tämä ei ole tarkoituksenmukaista, vaan kuvia olisi hyvä voida lisätä aidosti taustajärjestelmän
   images-rajapinnan avulla.
@@ -60,6 +58,9 @@ MUITA PARANNUSKOHTEITA:
   ollenkaan GitHubiin julkisesti, eli sen voisi ehkä kokonaan sieltä poistaa (vrt. edellinen kohta), jos haluaisi
   olla kovin varovainen.
 
+* Pitkä kuvaus-kenttä tai siinä ylipitkät sanat rikkoo tuloslistauksen lay-outin.
+  (=johtaa ikävästi scrollibaariin listasivulla) Voisi näyttää vain pienen pätkän kuvaus-kentästä
+  tuloslistauksessa tai muutoin pitää huolen, että näin ei käy.
 
 
 MUUTA HUOMIOITAVAA:
