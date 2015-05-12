@@ -13,22 +13,22 @@
             <td class="title">Otsikko:</td>
             <td>
                 <span class="error" ng-show="editForm.title.$error.required">Pakollinen tieto. <br/></span>
-                <input ng-model="add.title" name="title" required>
+                <input ng-model="add.title" name="title" class="form-control" required>
             </td>
         </tr>
         <tr>
             <td>Kuvaus:</td>
             <td>
                 <span class="error" ng-show="editForm.description.$error.required">Pakollinen tieto. <br/></span>
-                <input ng-model="add.description" name="description" required>
+                <textarea  ng-model="add.description" name="description" class="form-control" rows="6" required></textarea>
             </td>
         </tr>
         <tr>
             <td>Hinta (sentteinä):</td>
             <td>
-                <span class="error" ng-show="editForm.priceCents.$error.required">Pakollinen tieto. <br/></span>
-                <span class="error" ng-show="editForm.priceCents.$error.number">Hinnan tulee olla luku. <br/></span>
-                <input ng-model="add.priceCents" name="priceCents" type="number" required>
+                <span class="error" ng-show="editForm.priceCents.$error.required" class="form-control">Pakollinen tieto. <br/></span>
+                <span class="error" ng-show="editForm.priceCents.$error.number" class="form-control">Hinnan tulee olla luku. <br/></span>
+                <input ng-model="add.priceCents" name="priceCents" type="number" class="form-control" required>
             </td>
         </tr>
         <tr>
@@ -40,7 +40,7 @@
         <tr>
             <td>KuvaURL:</td>
             <td>
-                <input ng-model="add.imageUrl"  name="iamgeUrl" />
+                <input ng-model="add.imageUrl"  name="iamgeUrl" class="form-control"/>
             </td>
         </tr>
         <tr>
@@ -48,14 +48,14 @@
             <td>
                 <span class="error" ng-show="editForm.email.$error.required">Pakollinen tieto. <br/></span>
                 <span class="error" ng-show="editForm.email.$error.email">Syötä oikeanmuotoinen sähköpostiosoite.  <br/></span>
-                <input ng-model="add.email" name="email" type="email" required>
+                <input ng-model="add.email" name="email" type="email" class="form-control" required>
             </td>
         </tr>
         <tr>
             <td>Puhelin</td>
             <td>
                 <span class="error" ng-show="editForm.phone.$error.required">Pakollinen tieto. <br/></span>
-                <input ng-model="add.phone" name="phone" required>
+                <input ng-model="add.phone" name="phone" class="form-control" required>
             </td>
         </tr>
     </table>

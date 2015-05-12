@@ -10,8 +10,6 @@ PARANNUSKOHTEET TOP-5:
 
 * Syöttökentille pituusrajoitukset ilmoituksen lisäyksessä/muokkauksessa.
 
-* Ilmoituksen lisäyksessä/muokkauksessa "Kuvaus"-kentän syöttölaatikko suuremmaksi ja moniriviseksi.
-
 * Kuvien lisääminen oman koneen hakemistoista (nyt voi antaa URL:n netissä olevaan kuvaan, mutta
   tämä ei ole tarkoituksenmukaista, vaan kuvia olisi hyvä voida lisätä aidosti taustajärjestelmän
   images-rajapinnan avulla.
@@ -27,6 +25,9 @@ MUITA PARANNUSKOHTEITA:
   REST API -kutsu kestää pidempään.
 
 * Hinnan perusteella hakutulosten rajaaminen.
+
+* Monirivisen "kuvaus"-kentän syötteen esittäminen myös ilmoituksen näytössä monirivisenä
+  (=syötteeseen annettujen rivinvaihtojen esittäminen myös ilmoituksen näytössä rivinvaihtoina)
 
 * Kuvan lisäyksen yhteydessä myös kooltaan rajatun thumbnail-kuvan luonti ja postaus REST API:iin
 
@@ -58,6 +59,7 @@ MUITA PARANNUSKOHTEITA:
 * Oikeastaan voi pohtia, kuuluuko tässä vaiheessa taustajärjestelmän rajapinnan osoite
   ollenkaan GitHubiin julkisesti, eli sen voisi ehkä kokonaan sieltä poistaa (vrt. edellinen kohta), jos haluaisi
   olla kovin varovainen.
+
 
 
 MUUTA HUOMIOITAVAA:
